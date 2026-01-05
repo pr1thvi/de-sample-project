@@ -1,0 +1,14 @@
+.venv/
+dlt_duckdb/.dlt/
+dlt_duckdb/resources/__pycache__
+dlt_duckdb/utils/__pycache__
+
+tmdb.duckdb
+credentials/
+
+terraform/.terraform
+terraform/.terraform.lock.hcl
+
+.terraform/
+*.tfstate
+*.tfstate.backup
