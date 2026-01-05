@@ -10,6 +10,7 @@ def themoviedb_source(api_secret_key: str = dlt.secrets.value):
     )
 
     yield trending.themoviedb_trending_movies_resource(api_secret_key)
+    yield trending.themoviedb_trending_tv_series_resource(api_secret_key)
 
 
 if __name__ == "__main__":

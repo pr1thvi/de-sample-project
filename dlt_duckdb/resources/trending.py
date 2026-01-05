@@ -9,3 +9,12 @@ def themoviedb_trending_movies_resource(api_secret_key: str = dlt.secrets.value)
         "language": "en-US"
     }
     yield from fetch_data(api_secret_key, url, params)
+
+# From 'trending tv series' endpoint
+@dlt.resource(name="trending_tv_series", write_disposition="replace")
+def themoviedb_trending_tv_series_resource(api_secret_key: str = dlt.secrets.value):
+    url = "https://api.themoviedb.org/3/trending/tv/day"
+    params = {
+        "language": "en-US"
+    }
+    yield from fetch_data(api_secret_key, url, params)
