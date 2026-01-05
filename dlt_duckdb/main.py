@@ -6,9 +6,9 @@ from resources import movies
 def themoviedb_source(api_secret_key: str = dlt.secrets.value):
     yield movies.themoviedb_movies_resource(api_secret_key)
     
-    # yield dlt.resource(
-    #     movies.themoviedb_movie_details_resource(api_secret_key), name="movie_details"
-    # )
+    yield dlt.resource(
+        movies.themoviedb_movie_details_resource(api_secret_key), name="movie_details"
+    )
 
 
 if __name__ == "__main__":
