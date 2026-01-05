@@ -20,7 +20,7 @@ services:
 
   dlt_duckdb:
     build:
-      context: ./dlt_duckdb # Directory containing Dockerfile and dlt file | DuckDB
+      context: ./dlt_duckdb
       dockerfile: Dockerfile
     volumes:
       - ./dlt_duckdb/.dlt/secrets.toml:/app/.dlt/secrets.toml
