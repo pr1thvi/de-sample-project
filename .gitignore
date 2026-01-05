@@ -3,7 +3,7 @@ dlt_duckdb/.dlt/
 dlt_duckdb/resources/__pycache__
 dlt_duckdb/utils/__pycache__
 
-tmdb.duckdb
+themoviedb_pipeline.duckdb
 credentials/
 
 terraform/.terraform

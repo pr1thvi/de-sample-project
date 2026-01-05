@@ -1,14 +1,15 @@
 import dlt
-from resources import movies
-
+from resources import movies, trending
 
 @dlt.source
 def themoviedb_source(api_secret_key: str = dlt.secrets.value):
     yield movies.themoviedb_movies_resource(api_secret_key)
     
-    # yield dlt.resource(
-    #     movies.themoviedb_movie_details_resource(api_secret_key), name="movie_details"
-    # )
+    yield dlt.resource(
+        movies.themoviedb_movie_details_resource(api_secret_key), name="movie_details"
+    )
+
+    yield trending.themoviedb_trending_movies_resource(api_secret_key)
 
 
 if __name__ == "__main__":
@@ -22,5 +23,6 @@ if __name__ == "__main__":
         dataset_name="movie_data",
         progress="alive_progress",
     )
+    pipeline.drop()
     load_info = pipeline.run(themoviedb_source())
     print(load_info)
