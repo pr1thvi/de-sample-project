@@ -20,19 +20,19 @@ def themoviedb_movies_resource(api_secret_key: str = dlt.secrets.value):
 
 
 # From 'movie details' endpoint
-# @dlt.resource(name="movie_details", write_disposition="replace")
-# def themoviedb_movie_details_resource(api_secret_key: str = dlt.secrets.value):
-#     headers = _create_auth_headers(api_secret_key)
-#     movies = list(themoviedb_movies_resource(api_secret_key))
-#     for movie in movies:
-#         movie_id = movie["id"]
-#         url = f"https://api.themoviedb.org/3/movie/{movie_id}"
-#         params = {
-#             "append_to_response": "recommendations,reviews,similar,videos,images",
-#             "language": "en-US",
-#         }
-#         response = requests.get(url, headers=headers, params=params)
-#         response.raise_for_status()
-#         data = response.json()
-#         yield data
-#         time.sleep(1 / REQUESTS_PER_SECOND)
+@dlt.resource(name="movie_details", write_disposition="replace")
+def themoviedb_movie_details_resource(api_secret_key: str = dlt.secrets.value):
+    headers = _create_auth_headers(api_secret_key)
+    movies = list(themoviedb_movies_resource(api_secret_key))
+    for movie in movies:
+        movie_id = movie["id"]
+        url = f"https://api.themoviedb.org/3/movie/{movie_id}"
+        params = {
+            "append_to_response": "recommendations,reviews,similar,videos,images",
+            "language": "en-US",
+        }
+        response = requests.get(url, headers=headers, params=params)
+        response.raise_for_status()
+        data = response.json()
+        yield data
+        time.sleep(1 / REQUESTS_PER_SECOND)
