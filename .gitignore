@@ -3,6 +3,10 @@ dlt_duckdb/.dlt/
 dlt_duckdb/resources/__pycache__
 dlt_duckdb/utils/__pycache__
 
+dlt_bigquery/.dlt/
+dlt_bigquery/resources/__pycache__
+dlt_bigquery/utils/__pycache__
+
 themoviedb_pipeline.duckdb
 credentials/
 
