@@ -29,25 +29,25 @@ services:
   #   networks:
   #   - elt_network
 
-  # dbt:
-  #   image: ghcr.io/dbt-labs/dbt-bigquery:1.7.7
-  #   entrypoint: ["/bin/sh", "-c"]
-  #   working_dir: /dbt
-  #   command:
-  #     [
-  #       "ls -al /dbt && ls -al /keys && dbt deps && dbt run --profiles-dir /root/.dbt --project-dir /dbt",
-  #     ]
-  #   networks:
-  #     - elt_network
-  #   volumes:
-  #     - ${DBT_FILE_PATH}:/keys
-  #     - ./dbt_bigquery:/dbt
-  #     - ~/.dbt:/root/.dbt
-  #   depends_on:
-  #     - dlt_bigquery
-  #   environment:
-  #     - DBT_PROFILE=default
-  #     - DBT_TARGET=dev
+  dbt:
+    image: ghcr.io/dbt-labs/dbt-bigquery:1.7.7
+    entrypoint: ["/bin/sh", "-c"]
+    working_dir: /dbt
+    command:
+      [
+        "ls -al /dbt && ls -al /keys && dbt deps && dbt run --profiles-dir . --project-dir /dbt",
+      ]
+    networks:
+      - elt_network
+    volumes:
+      - ${DBT_FILE_PATH}:/keys
+      - ./dbt_bigquery:/dbt
+      - ~/.dbt:/root/.dbt
+    depends_on:
+      - dlt_bigquery
+    environment:
+      - DBT_PROFILE=default
+      - DBT_TARGET=dev
 
 networks:
   elt_network:
