@@ -1,5 +1,5 @@
 import dlt
-from resources import movies, trending
+from resources import movies, trending, tv_series, genre
 
 @dlt.source
 def themoviedb_source(api_secret_key: str = dlt.secrets.value):
@@ -9,8 +9,15 @@ def themoviedb_source(api_secret_key: str = dlt.secrets.value):
         movies.themoviedb_movie_details_resource(api_secret_key), name="movie_details"
     )
 
+    yield dlt.resource(
+        tv_series.themoviedb_tv_series_details_resource(api_secret_key), name="tv_series_details"
+    )
+
     yield trending.themoviedb_trending_movies_resource(api_secret_key)
     yield trending.themoviedb_trending_tv_series_resource(api_secret_key)
+
+    yield genre.themoviedb_genres_movies_resource(api_secret_key)
+    yield genre.themoviedb_genres_tv_series_resource(api_secret_key)
 
 
 if __name__ == "__main__":
