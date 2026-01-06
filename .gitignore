@@ -7,6 +7,15 @@ dlt_bigquery/.dlt/
 dlt_bigquery/resources/__pycache__
 dlt_bigquery/utils/__pycache__
 
+dbt_bigquery/.dbt/
+dbt_bigquery/.vscode/
+dbt_bigquery/profiles.yml
+dbt_bigquery/README.md
+dbt_bigquery/.user.yml
+
+
+
+
 themoviedb_pipeline.duckdb
 credentials/
 
@@ -16,3 +25,5 @@ terraform/.terraform.lock.hcl
 .terraform/
 *.tfstate
 *.tfstate.backup
+
+.env
