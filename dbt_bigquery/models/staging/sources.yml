@@ -15,5 +15,5 @@ sources:
       - name: tv_series_details__genres
       - name: tv_series_details__reviews__results
       - name: tv_series_details__similar__results
-      - name: genres_movie
+      - name: genres_movies
       - name: genres_tv_series

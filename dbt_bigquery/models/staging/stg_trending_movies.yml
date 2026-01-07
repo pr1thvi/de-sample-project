@@ -1,0 +1,37 @@
+version: 2
+
+models:
+  - name: stg_trending_movies
+    description: "Staging trending movies"
+    columns:
+      - name: trending_movie_id
+        description: "ID of the movie"
+        tests:
+          - unique
+          - not_null
+      
+      - name: trending_movie_title
+        description: "Title of the movie"
+        
+      - name: trending_movie_original_language
+        description: "Language the movie was originally shot in"
+
+      - name: trending_movie_overview
+        description: "Overview of the movie"
+
+      - name: trending_movie_popularity
+        description: "Popularity score of the movie"
+
+      - name: trending_movie_release_date
+        description: "Release date of the movie"
+
+      - name: trending_movie_vote_average
+        description: "Average vote the movie scored out of 10"
+        
+      - name: trending_movie_vote_count
+        description: "Count of votes that made up the Average vote score"
+
+      - name: _dlt_id
+        description: "data load tool id"
+        tests:
+          - not_null

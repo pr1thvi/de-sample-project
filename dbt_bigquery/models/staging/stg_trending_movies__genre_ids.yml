@@ -1,0 +1,21 @@
+version: 2
+
+models:
+  - name: stg_trending_movies__genre_ids
+    description: "Staging trending movies genre ids"
+    columns:
+      - name: value
+        description: "Movie genre id value"
+        tests:
+          - unique
+          - not_null
+
+      - name: _dlt_id
+        description: "data load tool id"
+        tests:
+          - not_null
+
+      - name: _dlt_parent_id
+        description: "data load tool parent id"
+        tests:
+          - not_null

@@ -1,0 +1,49 @@
+version: 2
+
+models:
+  - name: stg_movie_details
+    description: "Staging movies details"
+    columns:
+      - name: movie_budget
+        description: "Budget of the movie"
+        
+      - name: movie_id
+        description: "The movie's id"
+        tests:
+          - unique
+          - not_null
+
+      - name: movie_original_language
+        description: "The original language of the movie"
+
+      - name: movie_overview
+        description: "Overview of the movie"
+
+      - name: movie_popularity
+        description: "Popularity of the movie"
+
+      - name: movie_release_date
+        description: "The release date of the movie"
+
+      - name: movie_revenue
+        description: "The movie's revenue"
+
+      - name: movie_status
+        description: "The status of the movie"
+
+      - name: movie_tagline
+        description: "The movie's tagline"
+
+      - name: movie_title
+        description: "The title of the movie"
+
+      - name: movie_vote_average
+        description: "The movie's vote average"
+
+      - name: movie_vote_count
+        description: "The number of votes"
+
+      - name: _dlt_id
+        description: "data load tool id"
+        tests:
+          - not_null
