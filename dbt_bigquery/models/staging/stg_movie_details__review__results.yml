@@ -1,0 +1,39 @@
+version: 2
+
+models:
+  - name: stg_movie_details__reviews__results
+    description: "Staging movie details reviews results"
+    columns:
+      - name: movie_review_author_name
+        description: "Author of the review"
+
+      - name: movie_review_author_rating
+        description: "Rating of the review author"
+
+      - name: movie_review_authour_content
+        description: "The content of the review"
+
+      - name: movie_review_author_created_at
+        description: "Created date of the review"
+
+      - name: movie_review_id
+        description: "The ID of the review"
+        tests:
+          - unique
+          - not_null
+
+      - name: movie_review_author_updated_at
+        description: "Date when review was last update"
+
+      - name: movie_review_url
+        description: "The URL of the review"
+
+      - name: _dlt_parent_id
+        description: "data load tool parent id"
+        tests:
+          - not_null
+
+      - name: _dlt_id
+        description: "data load tool id"
+        tests:
+          - not_null

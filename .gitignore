@@ -13,7 +13,7 @@ dbt_bigquery/profiles.yml
 dbt_bigquery/README.md
 dbt_bigquery/.user.yml
 
-
+metabase-data/
 
 
 themoviedb_pipeline.duckdb
