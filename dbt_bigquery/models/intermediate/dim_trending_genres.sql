@@ -3,7 +3,7 @@
 WITH combined_genre_trending AS (
     SELECT
         _dlt_parent_id,
-        trending_movie_genre_id_value AS genre_id,
+        trending_movies__genre_id_value AS genre_id,
     FROM {{ ref('stg_trending_movies__genre_ids') }}
 
     UNION ALL
@@ -15,7 +15,7 @@ WITH combined_genre_trending AS (
 )
 
 SELECT
-    {{ dlt_utils.generate_surrogate_key(['_dlt_parent_id']) }} AS dim_trending_genres_sk,
+    {{ dbt_utils.generate_surrogate_key(['_dlt_parent_id']) }} AS dim_trending_genres_sk,
     _dlt_parent_id,
     genre_id
 FROM combined_genre_trending
