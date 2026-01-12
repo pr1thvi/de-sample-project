@@ -49,6 +49,38 @@ services:
       - DBT_PROFILE=default
       - DBT_TARGET=dev
 
+  metabase:
+    image: metabase/metabase:latest
+    container_name: metabase
+    hostname: metabase
+    ports:
+      - "3000:3000"
+    environment:
+      MB_DB_TYPE: postgres
+      MB_DB_DBNAME: metabaseappdb
+      MB_DB_PORT: 5432
+      MB_DB_USER: admin
+      MB_DB_PASS: 1234
+      MB_DB_HOST: metabase-postgres
+    depends_on:
+      - metabase-postgres
+    networks:
+      - elt_network
+    volumes:
+      - ${DBT_FILE_PATH}:/keys
+
+  metabase-postgres:
+    image: postgres:14
+    container_name: metabase-postgres
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: 1234
+      POSTGRES_DB: metabaseappdb
+    volumes:
+      - ./metabase-data:/var/lib/postgresql/data
+    networks:
+      - elt_network
+
 networks:
   elt_network:
     driver: bridge
