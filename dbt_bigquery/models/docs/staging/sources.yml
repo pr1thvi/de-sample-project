@@ -1,7 +1,7 @@
 version: 2
 
 sources:
-  - name: movie_data
+  - name: movie_data_mage
     tables:
       - name: movie_details
       - name: movie_details__genres
