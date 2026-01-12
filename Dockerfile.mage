@@ -1,0 +1,9 @@
+FROM mageai/mageai:latest
+
+# Install system dependencies if needed (none strictly required for basic dlt/dbt, but good practice)
+# RUN apt-get update && apt-get install -y ...
+
+# Install Python dependencies
+COPY requirements.txt /tmp/requirements.txt
+RUN pip install --no-cache-dir dlt[bigquery] dbt-bigquery google-cloud-bigquery
+RUN pip install --no-cache-dir -r /tmp/requirements.txt

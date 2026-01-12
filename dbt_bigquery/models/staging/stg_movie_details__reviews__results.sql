@@ -2,7 +2,7 @@
 
 WITH source AS (
     SELECT *
-    FROM {{ source('movie_data', 'movie_details__reviews__results') }}
+    FROM {{ source('movie_data_mage', 'movie_details__reviews__results') }}
 )
 
 SELECT

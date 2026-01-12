@@ -23,32 +23,26 @@ def _create_auth_headers(api_secret_key) -> dict[str, str]:
 
     return headers
 
-def fetch_data(api_secret_key, url, params, results_key="results"):
+def fetch_data(api_secret_key, url, params, page=1, results_key="results"):
     """
-    Docstring for fetch_data Fetches data from the given TMDB API URL with pagination support.
+    Docstring for fetch_data Fetches data from the given TMDB API URL for a specific page.
 
-    This function makes API requests to a specified URL, handling pagination to accumulate
-    results up to a predefined maximum. It incorporates delay between requests to comply with
-    the API's rate limit policy.
+    This function makes a single API request to a specific page.
 
     Parameters:
     :param api_secret_key (str): The API secret key for authentication.
     :param url (str): The TMDB API endpoint URL to fetch data from.
     :param params (dict): Parameters to include in the API request.
+    :param page (int): The page number to fetch. Defaults to 1.
 
     Returns:
-    - list: A list of results from the API, up to the specified MAX_RESULTS.
+    - list: A list of results from the API for the requested page.
     """
 
     headers = _create_auth_headers(api_secret_key)
-    results = []
-    page = 1
-    while len(results) < MAX_RESULTS:
-        params["page"] = page
-        response = requests.get(url, headers=headers, params=params)
-        response.raise_for_status()
-        data = response.json()
-        results.extend(data[results_key])
-        page += 1
-        time.sleep(1 / REQUESTS_PER_SECOND)
-    return results[:MAX_RESULTS]
+    params["page"] = page
+    response = requests.get(url, headers=headers, params=params)
+    response.raise_for_status()
+    data = response.json()
+    time.sleep(1 / REQUESTS_PER_SECOND)
+    return data.get(results_key, [])
