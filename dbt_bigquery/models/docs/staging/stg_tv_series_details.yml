@@ -3,7 +3,7 @@ version: 2
 # Create dbt model
 models:
   - name: stg_tv_series_details
-    descripton: "Staging tv series details"
+    description: "Staging tv series details"
     columns:
       - name: tv_series_first_air_date
         description: "Date when the tv series was first aired"

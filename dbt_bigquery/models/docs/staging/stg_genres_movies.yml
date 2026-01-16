@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: stg_genres_movie
+  - name: stg_genres_movies
     description: "Staging genres movie"
     columns:
       - name: genre_movie_id
