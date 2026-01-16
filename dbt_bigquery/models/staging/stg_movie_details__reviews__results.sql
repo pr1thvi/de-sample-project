@@ -1,5 +1,3 @@
-{{ config(materialized='view') }}
-
 WITH source AS (
     SELECT *
     FROM {{ source('movie_data_mage', 'movie_details__reviews__results') }}
