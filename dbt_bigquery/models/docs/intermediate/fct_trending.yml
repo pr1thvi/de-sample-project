@@ -6,7 +6,6 @@ models:
     columns:
       - name: fct_trending_sk
         description: "Surrogate key"
-        type: number
         tests:
           - unique
           - not_null

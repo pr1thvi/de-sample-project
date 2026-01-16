@@ -9,10 +9,10 @@ models:
 
       - name: _dlt_id
         description: "data load tool id"
-        test:
+        tests:
           - not_null
 
       - name: _dlt_parent_id
         description: "data load tool parent id"
-        test:
+        tests:
           - not_null
